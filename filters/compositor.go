@@ -23,6 +23,6 @@ type Compositor interface {
 
 type CompositorFunc func(adaptor Adaptor, typecons TypeConstraint) (Value, bool)
 
-func (CompositorFunc fn) Validate(adaptor Adaptor, typecons TypeConstraint) (Value, bool) {
+func (fn CompositorFunc) Validate(adaptor Adaptor, typecons TypeConstraint) (Value, bool) {
 	return fn(adaptor, typecons)
 }
