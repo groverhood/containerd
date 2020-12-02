@@ -17,12 +17,12 @@
 package filters
 
 // Layer a type constraint on top of a result yielded by an adaptor.
-type Compositor interface {
-	Validate(adaptor Adaptor, typecons TypeConstraint) (value Value, valid bool)
+type TypedAdaptor interface {
+	TypedField(fieldpath []string, typecons TypeConstraint) (value Value, valid bool)
 }
 
-type CompositorFunc func(adaptor Adaptor, typecons TypeConstraint) (Value, bool)
+type TypedAdaptorFunc func(fieldpath []string, typecons TypeConstraint) (Value, bool)
 
-func (fn CompositorFunc) Validate(adaptor Adaptor, typecons TypeConstraint) (Value, bool) {
+func (fn TypedAdaptorFunc) Validate(fieldpath []string, typecons TypeConstraint) (Value, bool) {
 	return fn(adaptor, typecons)
 }
