@@ -24,5 +24,5 @@ type TypedAdaptor interface {
 type TypedAdaptorFunc func(fieldpath []string, typecons TypeConstraint) (Value, bool)
 
 func (fn TypedAdaptorFunc) Validate(fieldpath []string, typecons TypeConstraint) (Value, bool) {
-	return fn(adaptor, typecons)
+	return fn(fieldpath, typecons)
 }
